@@ -97,4 +97,10 @@ WHERE name <> 'Art Garfunkel'
         JOIN actor   ON actorid=actor.id
   WHERE name = 'Art Garfunkel')
 //
+
+SELECT DISTINCT name 
+FROM (select movie.id AS m, actorid AS m2 from movie JOIN casting ON movie.id=casting.movieid JOIN actor ON actorid=actor.id
+WHERE name='Art Garfunkel') AS x
+JOIN casting ON casting.movieid=x.m
+JOIN actor ON casting.actorid=actor.id AND m2<>actor.id
   
